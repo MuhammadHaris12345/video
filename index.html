@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meri Video</title>
+  <title>Meri Video (Protected)</title>
   <style>
     * {
       margin: 0;
@@ -33,10 +33,20 @@
 </head>
 <body>
   <div class="container">
-    <video controls playsinline>
+    <!-- controlsList="nodownload" browser ke menu se download option hata deta hai -->
+    <video id="myVideo" controls playsinline controlsList="nodownload">
       <source src="video.mp4" type="video/mp4">
       Aapka browser video support nahi karta.
     </video>
   </div>
+
+  <script>
+    // Right-click (context menu) ko block karne ke liye
+    const video = document.getElementById('myVideo');
+    
+    video.addEventListener('contextmenu', function(e) {
+      e.preventDefault(); // Browser ka default menu khulne se rokta hai
+    });
+  </script>
 </body>
 </html>
